@@ -38,6 +38,12 @@ A detailed 15-week roadmap is available on the [course website](https://slit-ai.
 
 - **Zhengjun Yue**, Assistant Professor, Shenzhen Loop Area Institute — Speech and language technology for healthcare
 
+### Teaching Assistants
+
+- **Jiayang Chen**, Nankai University · AI4SE — AI for Science and Embodied Science
+- **Yihang Xu**, Shanghai Jiao Tong University · AI4SE — World Models, interpretability, and quantum computing
+- **Lang Zhou**, Sun Yat-sen University · EACV — LLM reasoning optimization and memory systems
+
 ## Course Format and Assessment
 
 Each week combines two sessions on concepts, theory, and representative open models with one session dedicated to individual practice, observation, and discussion.

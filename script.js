@@ -27,7 +27,7 @@ updateProgress();
 window.addEventListener('scroll', updateProgress, { passive: true });
 
 const revealTargets = document.querySelectorAll(
-  '.overview-grid, .topic-index, .outcome-intro, .outcome-list li, .schedule-list article, .format-grid, .grading, .faculty, .materials-grid, .references'
+  '.overview-grid, .topic-index, .outcome-intro, .outcome-list li, .schedule-list article, .format-grid, .grading, .faculty, .assistant, .materials-grid, .references'
 );
 
 if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
