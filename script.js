@@ -57,3 +57,36 @@ const sectionObserver = new IntersectionObserver((entries) => {
 }, { threshold: [0.15, 0.35, 0.6], rootMargin: '-18% 0px -58%' });
 
 sections.forEach((section) => sectionObserver.observe(section));
+
+// Mulberry32: seed each draw with the click's Unix timestamp in milliseconds.
+function selectGroup(timestamp) {
+  let seed = timestamp >>> 0;
+  seed += 0x6D2B79F5;
+  let value = Math.imul(seed ^ (seed >>> 15), seed | 1);
+  value ^= value + Math.imul(value ^ (value >>> 7), value | 61);
+  const random = ((value ^ (value >>> 14)) >>> 0) / 4294967296;
+  return Math.floor(random * 10) + 1;
+}
+
+const groupPicker = document.querySelector('#group-picker');
+const groupDialog = document.querySelector('#group-dialog');
+const groupMembers = document.querySelector('#group-members');
+
+groupPicker?.addEventListener('click', () => {
+  const groupNumber = selectGroup(Date.now());
+  document.querySelector('#group-dialog-title').textContent = `第 ${groupNumber} 组`;
+  groupMembers.replaceChildren(...courseGroups[groupNumber - 1].map((name) => {
+    const member = document.createElement('li');
+    member.textContent = name;
+    return member;
+  }));
+  groupDialog.showModal();
+});
+
+groupDialog?.querySelector('.group-dialog-close').addEventListener('click', () => groupDialog.close());
+groupDialog?.addEventListener('click', (event) => {
+  if (event.target !== groupDialog) return;
+  const bounds = groupDialog.getBoundingClientRect();
+  if (event.clientX < bounds.left || event.clientX > bounds.right ||
+      event.clientY < bounds.top || event.clientY > bounds.bottom) groupDialog.close();
+});
